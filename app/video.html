@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui,uc-fitscreen=no">
+
+    <title></title>
+    <style>
+        .layer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        video {
+            position: relative;
+        }
+
+        .layer-img {
+            width: 20%;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="layer">
+
+    <img class="layer-img" src="assets/images/play.png" width="100%" onclick="vidplay('Video1')">
+    <video id="Video1" width="100%" height="200px" src="assets/video/coldplay.mp4" onclick="vidplay(id)"></video>
+</div>
+
+
+<div id="buttonbar">
+    <button id="restart" onclick="restart();">restart</button>
+</div>
+
+</body>
+</html>
+<script src="../bower_components/tp.zepto/zepto.min.js"></script>
+<script type="text/javascript">
+
+    function vidplay(id) {
+
+        var video = document.getElementById(id);
+
+        if (video.paused) {
+            video.play();
+            $('.layer-img').addClass('hide');
+        } else {
+            video.pause();
+            $('.layer-img').removeClass('hide');
+        }
+    }
+
+    function restart() {
+        var video = document.getElementById("Video1");
+        video.currentTime = 0;
+    }
+
+</script>
